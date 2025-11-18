@@ -1,0 +1,134 @@
+rm: *.tab: No such file or directory
+rm: *.bin: No such file or directory
+               ( 	3 	 70
+               ( 	3 	 70
+              20 	5 	 90
+               ) 	3 	 71
+               , 	3 	 72
+              ID 	2 	 85
+               , 	3 	 72
+               ( 	3 	 70
+               1 	5 	 90
+               ) 	3 	 71
+               , 	3 	 72
+               ) 	3 	 71
+                 	7 	 95
+CREATE TABLE statement
+dbfile.bin size = 192
+               ( 	3 	 70
+  John F Kennedy 	5 	 91
+               , 	3 	 72
+           10001 	5 	 90
+               , 	3 	 72
+               M 	5 	 91
+               , 	3 	 72
+              99 	5 	 90
+               ) 	3 	 71
+                 	7 	 95
+INSERT statement
+dbfile.bin size = 192
+               ( 	3 	 70
+    Bill Clinton 	5 	 91
+               , 	3 	 72
+           10002 	5 	 90
+               , 	3 	 72
+               M 	5 	 91
+               , 	3 	 72
+              85 	5 	 90
+               ) 	3 	 71
+                 	7 	 95
+INSERT statement
+dbfile.bin size = 192
+               ( 	3 	 70
+    Donald Trump 	5 	 91
+               , 	3 	 72
+           10003 	5 	 90
+               , 	3 	 72
+               M 	5 	 91
+               , 	3 	 72
+              95 	5 	 90
+               ) 	3 	 71
+                 	7 	 95
+INSERT statement
+dbfile.bin size = 192
+               * 	3 	 73
+                 	7 	 95
+SELECT statement
+name              ID gender scores
+-------------- ----- ------ ------ 
+John F Kennedy 10001 M          99
+Bill Clinton   10002 M          85
+Donald Trump   10003 M          95
+
+ 3 record(s) selected.
+dbfile.bin size = 192
+               ( 	3 	 70
+              ID 	2 	 85
+               , 	3 	 72
+               , 	3 	 72
+               ) 	3 	 71
+                 	7 	 95
+CREATE TABLE statement
+dbfile.bin size = 336
+               ( 	3 	 70
+           10001 	5 	 90
+               , 	3 	 72
+              70 	5 	 90
+               , 	3 	 72
+              71 	5 	 90
+               ) 	3 	 71
+                 	7 	 95
+INSERT statement
+dbfile.bin size = 336
+               ( 	3 	 70
+           10002 	5 	 90
+               , 	3 	 72
+              80 	5 	 90
+               , 	3 	 72
+              81 	5 	 90
+               ) 	3 	 71
+                 	7 	 95
+INSERT statement
+dbfile.bin size = 336
+               ( 	3 	 70
+           10001 	5 	 90
+               , 	3 	 72
+              80 	5 	 90
+               , 	3 	 72
+              81 	5 	 90
+               ) 	3 	 71
+                 	7 	 95
+INSERT statement
+dbfile.bin size = 336
+               ( 	3 	 70
+           10005 	5 	 90
+               , 	3 	 72
+              90 	5 	 90
+               , 	3 	 72
+              91 	5 	 90
+               ) 	3 	 71
+                 	7 	 95
+INSERT statement
+dbfile.bin size = 336
+               * 	3 	 73
+                 	7 	 95
+SELECT statement
+   ID quiz final
+----- ---- ----- 
+10001   70    71
+10002   80    81
+10001   80    81
+10005   90    91
+
+ 4 record(s) selected.
+dbfile.bin size = 336
+               * 	3 	 73
+                 	7 	 95
+SELECT statement
+   ID name           gender scores quiz final
+----- -------------- ------ ------ ---- ----- 
+10001 John F Kennedy M          99   70    71
+10001 John F Kennedy M          99   80    81
+10002 Bill Clinton   M          85   80    81
+
+ 3 record(s) selected.
