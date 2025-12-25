@@ -164,73 +164,11 @@ typedef enum error_return_codes
 	INVALID_COLUMN_DEFINITION,	// -390
 	INVALID_COLUMN_LENGTH,			// -389
   INVALID_REPORT_FILE_NAME,		// -388
-  INVALID_AGGREGATE_COLUMN,     // -387
-  TOO_MANY_COLUMNS,             // -386
   /* Must add all the possible errors from I/U/D + SELECT here */
 	FILE_OPEN_ERROR = -299,			// -299
 	DBFILE_CORRUPTION,					// -298
 	MEMORY_ERROR							  // -297
 } return_codes;
-
-/* WHERE clause operator types */
-typedef enum where_operator_type
-{
-	OP_EQUAL = 1,       // =
-	OP_LESS,            // <
-	OP_GREATER,         // >
-	OP_IS_NULL,         // IS NULL
-	OP_IS_NOT_NULL      // IS NOT NULL
-} where_operator;
-
-/* Logical operators for chaining conditions */
-typedef enum logical_operator_type
-{
-	LOG_NONE = 0,       // No logical operator (single condition)
-	LOG_AND,            // AND
-	LOG_OR              // OR
-} logical_operator;
-
-/* Single WHERE condition structure */
-typedef struct where_condition_def
-{
-	char col_name[MAX_IDENT_LEN+1];     // Column name
-	where_operator op;                   // Operator type
-	char value[MAX_TOK_LEN];             // Comparison value (for relational ops)
-	int col_index;                       // Column index in table (resolved at parse time)
-	logical_operator log_op;             // Logical operator to next condition
-	struct where_condition_def *next;    // Next condition in chain
-} where_condition;
-
-/* SELECT column specification */
-typedef enum select_col_type_enum
-{
-	SEL_STAR = 1,           // SELECT *
-	SEL_COLUMNS,            // SELECT col1, col2, ...
-	SEL_AGGREGATE           // SELECT AGG(col)
-} select_col_type;
-
-/* Aggregate function types */
-typedef enum aggregate_type_enum
-{
-	AGG_NONE = 0,
-	AGG_SUM,
-	AGG_AVG,
-	AGG_COUNT
-} aggregate_type;
-
-/* SELECT query structure */
-typedef struct select_query_def
-{
-	select_col_type col_type;
-	int col_indices[MAX_NUM_COL];       // Column indices to select
-	int num_columns;                     // Number of columns selected
-	aggregate_type agg_type;            // Aggregate function type
-	int agg_col_index;                  // Column index for aggregate
-	char agg_col_name[MAX_IDENT_LEN+1]; // Column name for aggregate
-	char order_by_col[MAX_IDENT_LEN+1]; // ORDER BY column name
-	int order_by_col_index;             // ORDER BY column index
-	bool order_desc;                    // Descending order flag
-} select_query;
 
 
 /* This structure defines the table file header that will be
@@ -302,14 +240,3 @@ int select_natural_join(const char *table1_name, const char *table2_name);
 
 int sem_insert(token_list *t_list);
 int sem_select_stmt(token_list *t_list);
-int sem_delete(token_list *t_list);
-int sem_update(token_list *t_list);
-
-// WHERE clause parsing and evaluation
-where_condition* parse_where_clause(token_list **cur_token, tpd_entry *tpd);
-bool evaluate_where_condition(where_condition *cond, char **row_data, tpd_entry *tpd);
-void free_where_conditions(where_condition *cond);
-
-// DELETE and UPDATE functions
-int delete_records(const char *table_name, where_condition *where_cond);
-int update_records(const char *table_name, const char *set_col, const char *set_value, where_condition *where_cond);

@@ -11,6 +11,7 @@
 #include <sys/types.h>
 #include <vector>
 #include <string>
+#include <algorithm>  // for std::sort
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>   // for std::atoi
@@ -1537,7 +1538,7 @@ int select_all(const char *table_name)
   const int OUT_CAP = 512;
   for (int i = 0; i < tpd->num_columns; ++i) {
     bufs[i].assign(OUT_CAP, '\0');
-    outs[i] = bufs[i].data();
+    outs[i] = &bufs[i][0];
   }
 
   // Calculate column widths: start with column name lengths
@@ -1717,11 +1718,11 @@ int select_natural_join(const char *table1_name, const char *table2_name)
   const int OUT_CAP = 512;
   for (int i = 0; i < tpd1->num_columns; ++i) {
     bufs1[i].assign(OUT_CAP, '\0');
-    outs1[i] = bufs1[i].data();
+    outs1[i] = &bufs1[i][0];
   }
   for (int i = 0; i < tpd2->num_columns; ++i) {
     bufs2[i].assign(OUT_CAP, '\0');
-    outs2[i] = bufs2[i].data();
+    outs2[i] = &bufs2[i][0];
   }
 
   // Read all rows from both tables
@@ -2697,7 +2698,7 @@ int delete_records(const char *table_name, where_condition *where_cond)
   const int OUT_CAP = 512;
   for (int i = 0; i < tpd->num_columns; ++i) {
     bufs[i].assign(OUT_CAP, '\0');
-    outs[i] = bufs[i].data();
+    outs[i] = &bufs[i][0];
   }
   
   // Read all rows and filter out deleted ones
@@ -2899,7 +2900,7 @@ int update_records(const char *table_name, const char *set_col, const char *set_
   const int OUT_CAP = 512;
   for (int i = 0; i < tpd->num_columns; ++i) {
     bufs[i].assign(OUT_CAP, '\0');
-    outs[i] = bufs[i].data();
+    outs[i] = &bufs[i][0];
   }
   
   // Read all rows and update matching ones

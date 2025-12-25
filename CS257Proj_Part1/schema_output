@@ -1,0 +1,24 @@
+Table PD size            (tpd_size)    = 144
+Table Name               (table_name)  = students
+Number of Columns        (num_columns) = 3
+Column Descriptor Offset (cd_offset)   = 36
+Table PD Flags           (tpd_flags)   = 0
+
+Column Name   (col_name) = id
+Column Id     (col_id)   = 0
+Column Type   (col_type) = 10
+Column Length (col_len)  = 4
+Not Null Flag (not_null) = 0
+
+Column Name   (col_name) = name
+Column Id     (col_id)   = 1
+Column Type   (col_type) = 12
+Column Length (col_len)  = 20
+Not Null Flag (not_null) = 0
+
+Column Name   (col_name) = gpa
+Column Id     (col_id)   = 2
+Column Type   (col_type) = 10
+Column Length (col_len)  = 4
+Not Null Flag (not_null) = 0
+

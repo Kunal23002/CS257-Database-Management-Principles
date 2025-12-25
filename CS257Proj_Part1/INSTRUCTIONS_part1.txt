@@ -1,0 +1,21 @@
+CS257 Database Project - Part 1
+Author: Kunal Elchipuram
+
+COMPILATION (in Docker GCC container):
+  gcc -g -o db db.cpp
+
+//since i was testing the code before submission on mac - i had to specifically 
+mention to use the c++ standard library otherwise , gcc on mac gets confused with clang
+
+Note: If compiling on Mac/local system, use:
+  gcc -g -o db db.cpp -lstdc++
+  OR
+  g++ -g -o db db.cpp
+
+EXECUTION:
+  ./db "SQL_COMMAND"
+
+EXAMPLES:
+  ./db "create table student (id int, first char(10), last varchar(10), age int)"
+  ./db "insert into student values (1, 'John', 'Doe', 20)"
+  ./db "select * from student"

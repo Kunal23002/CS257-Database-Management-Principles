@@ -1,0 +1,24 @@
+CS257 Database Project - Part 2
+Author: Kunal Elchipuram
+
+COMPILATION (in Docker GCC container):
+  gcc -g -o db db.cpp
+  
+//since i was testing the code before submission on mac - i had to specifically 
+mention to use the c++ standard library otherwise , gcc on mac gets confused with clang
+
+Note: If compiling on Mac/local system, use:
+  gcc -g -o db db.cpp -lstdc++
+  OR
+  g++ -g -o db db.cpp
+
+EXECUTION:
+  ./db "SQL_COMMAND"
+
+EXAMPLES:
+  ./db "insert into students values (1, 'Alice', 'Smith', 3.8)"
+  ./db "delete from students where gpa < 3.0"
+  ./db "update students set gpa = 4.0 where id = 1"
+  ./db "select * from students where gpa > 3.5 order by name desc"
+  ./db "select sum(gpa), avg(gpa), count(*) from students"
+  ./db "select * from students natural join grades"
